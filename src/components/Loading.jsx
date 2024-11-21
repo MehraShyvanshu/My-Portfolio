@@ -1,6 +1,6 @@
 import styles from "../style";
 import { motion } from "framer-motion";
-import Shristy from "../assets/Shristy.png";
+import Shyvanshu from "../assets/Shyvanshu Mehra Logo.png";
 
 const Loading = () => {
   return (
@@ -15,7 +15,7 @@ const Loading = () => {
         ease: "easeInOut",
       }}
     >
-      <img src={Shristy} alt="Shristy Kumari" className="w-[80px] h-[80px]" />
+      <img src={Shyvanshu} alt="Shyvanshu Mehra" className="w-[80px] h-[80px]" />
     </motion.div>
   );
 };

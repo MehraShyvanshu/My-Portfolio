@@ -42,14 +42,7 @@ const FeatureCard = ({
       <p className="font-poppins font-normal text-dimWhite text-[14px] leading-[30px] mb-1">
         {duration}
       </p>
-      <p className="font-poppins font-normal text-dimWhite text-[16px] leading-[30px] mb-1">
-        ● {content1}
-      </p>
-      {content2 && (
-        <p className="font-poppins font-normal text-dimWhite text-[16px] leading-[30px] mb-1">
-          ● {content2}
-        </p>
-      )}
+      
     </div>
   </div>
 );
@@ -66,7 +59,7 @@ const Education = () => {
         transition={{ duration: 1 }}
       >
         <div className={layout.sectionImgReverse}>
-          <div className="w-[70%] h-[70%] relative z-[4]">
+          <div className="w-[40%] h-[40%] relative z-[4]">
             <Lottie {...defaultOptions} />
           </div>
 

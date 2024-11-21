@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import { socialMedia, aboutMe } from "../constants";
-import profilePic from "../assets/ProfilePic.jpeg";
+import ppic from "../assets/ppic.jpeg";
 import { layout } from "../style";
 import { resumeLink, repoLink } from "../constants";
 import { AiFillGithub } from "react-icons/ai";
@@ -55,14 +55,14 @@ const Footer = () => (
 
       <div className="md:ml-auto mt-10 md:mt-0">
         <img
-          src={profilePic}
-          alt="Shristy Kumari"
+          src={ppic}
+          alt="Shyvanshu Mehra"
           className="w-[200px] h-[200px] border-2 border-teal-200 relative z-[5] rounded-full"
         />
       </div>
     </div>
     <div className="text-center font-poppins font-normal text-dimWhite text-xs sm:text-sm pb-4">
-      <p>Made with ❤️ by Shristy Kumari</p>
+      <p>Made with ❤️ by Shyvanshu Mehra</p>
     </div>
   </footer>
 );

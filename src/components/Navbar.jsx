@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { close, menu } from "../assets";
-import Shristy from "../assets/Shristy.png";
+import Shyvanshu from "../assets/Shyvanshu Mehra Logo.png";
 import { navLinks } from "../constants";
 import { scrollToSection } from "../../lib/helperFunctions";
 
@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="w-full  flex justify-between items-center navbar">
       {/* Logo */}
       <a href="#home">
-        <img src={Shristy} alt="ShriSty Kumari" className="w-[80px] h-[80px]" />
+        <img src={Shyvanshu} alt="Shyvanshu Mehra" className="w-[80px] h-[80px]" />
       </a>
 
       {/* List of links */}
