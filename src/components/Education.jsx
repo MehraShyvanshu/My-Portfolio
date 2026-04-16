@@ -4,77 +4,87 @@ import Lottie from "react-lottie-player";
 import animationData from "../lotties/quiz-mode-teal-dark.json";
 import { motion } from "framer-motion";
 
-// lottie config
 const defaultOptions = {
   loop: true,
   play: true,
   animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
+  rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
 };
 
-const FeatureCard = ({
-  icon,
-  title,
-  degree,
-  duration,
-  content1,
-  content2,
-  index,
-}) => (
-  <div
-    className={`flex flex-row p-6 rounded-[20px]
-	${index === educationList.length - 1 ? "mb-0" : "mb-6"} feature-card`}
+const FeatureCard = ({ icon, title, degree, duration, index }) => (
+  <motion.div
+    initial={{ x: 40, opacity: 0 }}
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.55, delay: index * 0.12 }}
+    viewport={{ once: true }}
+    className={`flex flex-row p-6 rounded-3xl ${
+      index === educationList.length - 1 ? "mb-0" : "mb-6"
+    } glass-card group items-center`}
   >
+    {/* Icon circle */}
     <div
-      className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}
+      className="w-[70px] h-[70px] rounded-2xl flex items-center justify-center flex-shrink-0 bg-white/5 border border-zinc-200/10 group-hover:border-[#db5a51]/30 transition-all duration-300 overflow-hidden"
     >
-      <img src={icon} alt="icon" className="w-[80%] h-[80%] object-contain" />
+      <img src={icon} alt={title} className="w-[85%] h-[85%] object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
     </div>
-    <div className="flex-1 flex flex-col ml-4">
-      <h4 className="font-poppins font-semibold text-white text-[20px] leading-[30px] mb-1 text-gradient">
+
+    {/* Text */}
+    <div className="flex-1 flex flex-col ml-6">
+      <h4 className="font-outfit font-black text-zinc-900 dark:text-white text-[20px] tracking-tight leading-none mb-2 group-hover:text-[#db5a51] transition-colors">
         {title}
       </h4>
-      <p className="font-poppins font-normal text-white text-[16px] leading-[30px] mb-1 ">
+      <p className="font-outfit font-bold text-zinc-500 dark:text-zinc-400 text-[15px] mb-3">
         {degree}
       </p>
-      <p className="font-poppins font-normal text-dimWhite text-[14px] leading-[30px] mb-1">
-        {duration}
-      </p>
-      
+      <div className="flex items-center gap-2">
+         <span className="w-2 h-2 rounded-full bg-[#db5a51] animate-pulse" />
+         <span className="font-outfit font-bold text-[11px] uppercase tracking-widest text-[#db5a51]/80">{duration}</span>
+      </div>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Education = () => {
   return (
-    <section id="education">
-      <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-        Education
-      </h1>
+    <section id="education" className="section-divider py-20 relative">
       <motion.div
-        className={layout.sectionReverse}
-        whileInView={{ x: [-60, 0], opacity: [0, 1] }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
+        className="absolute top-20 left-1/4 w-64 h-64 bg-[#db5a51]/5 blur-[100px] rounded-full pointer-events-none"
+      />
+
+      <motion.h1
+        initial={{ y: -20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="section-heading w-full font-outfit font-black ss:text-[64px] text-[48px] text-zinc-900 dark:text-white ss:leading-[80px] leading-[60px] tracking-tighter text-center mb-16"
       >
-        <div className={layout.sectionImgReverse}>
-          <div className="w-[40%] h-[40%] relative z-[4]">
+        Academic <span className="text-[#db5a51]">Journey</span>
+      </motion.h1>
+
+      <div className={`${layout.sectionReverse} gap-12`}>
+        {/* Lottie */}
+        <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className={`${layout.sectionImgReverse} relative`}
+        >
+          <div className="w-[80%] max-w-[400px] relative z-[4] drop-shadow-[0_0_30px_rgba(219,90,81,0.2)]">
             <Lottie {...defaultOptions} />
           </div>
+          <div className="absolute z-[3] -left-1/4 top-0 w-[60%] h-[60%] rounded-full white__gradient opacity-10" />
+        </motion.div>
 
-          {/* gradient start */}
-          <div className="absolute z-[3] -left-1/2 top-0 w-[50%] h-[50%] rounded-full white__gradient" />
-          <div className="absolute z-[0] w-[50%] h-[50%] -left-1/2 bottom-0 rounded-full pink__gradient" />
-          {/* gradient end */}
-        </div>
-
+        {/* Cards */}
         <div className={`${layout.sectionInfo} flex-col`}>
           {educationList.map((feature, index) => (
             <FeatureCard key={feature.id} index={index} {...feature} />
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

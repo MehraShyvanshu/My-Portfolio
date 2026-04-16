@@ -1,5 +1,5 @@
 import styles from "../style";
-import { arrowUp } from "../assets";
+import { AiOutlineArrowUp } from "react-icons/ai";
 import { callToAction } from "../constants";
 
 const LetsConnect = () => {
@@ -15,8 +15,9 @@ const LetsConnect = () => {
           <p className="font-poppins font-medium text-[18px] leading-[23px]">
             <span className="text-gradient">Let's</span>
           </p>
-          <img src={arrowUp} alt="arrowUp" className="w-[23px] h-[23px] " />
+          <AiOutlineArrowUp className="w-[23px] h-[23px] text-[#db5a51]" />
         </div>
+
         <div className={`${styles.flexStart} flex-row`}>
           <p className="font-poppins font-medium text-[18px] leading-[23px]">
             <span className="text-gradient">Connect</span>

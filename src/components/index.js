@@ -1,5 +1,6 @@
 // This file just imports all components and
 // exports them from one place to make code more readable
+import AboutMe from "./AboutMe";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Education from "./Education";
@@ -16,6 +17,7 @@ import Achievements from "./Achievements";
 
 
 export {
+    AboutMe,
     Navbar,
     Hero,
     Education,

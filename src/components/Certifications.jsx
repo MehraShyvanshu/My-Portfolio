@@ -5,83 +5,98 @@ import Lottie from "react-lottie-player";
 import animationData from "../lotties/certification-animation.json";
 import { motion } from "framer-motion";
 
-// lottie config
 const defaultOptions = {
   loop: true,
   play: true,
   animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
+  rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
 };
 
-const FeatureCard = ({
-  icon,
-  title,
-  organisation,
-  degree,
-  duration,
-  content1,
-  content2,
-  index,
-}) => (
-  <div
-    className={`flex flex-row p-6 rounded-[20px]
-	${index === certification.length - 1 ? "mb-0" : "mb-6"} feature-card`}
+const CertCard = ({ icon, title, organisation, duration, content1, index }) => (
+  <motion.div
+    initial={{ x: 40, opacity: 0 }}
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.55, delay: index * 0.12 }}
+    viewport={{ once: true }}
+    className={`flex flex-row p-6 rounded-3xl ${
+      index === certification.length - 1 ? "mb-0" : "mb-6"
+    } glass-card group items-center border-zinc-200/10 hover:border-[#db5a51]/30`}
   >
+    {/* Icon circle */}
     <div
-      className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}
+      className="w-[70px] h-[70px] rounded-2xl flex items-center justify-center flex-shrink-0 bg-white/5 border border-zinc-200/10 group-hover:border-[#db5a51]/30 transition-all duration-300"
     >
-      <img src={icon} alt="icon" className="w-[80%] h-[80%] object-contain" />
+      <img
+        src={icon}
+        alt={organisation}
+        className="w-[80%] h-[80%] object-contain rounded-xl grayscale group-hover:grayscale-0 transition-all duration-500"
+      />
     </div>
-    <div className="flex-1 flex flex-col ml-4">
-      <h4 className="font-poppins font-semibold text-white text-[20px] leading-[30px] mb-1 text-gradient">
+
+    {/* Content */}
+    <div className="flex-1 flex flex-col ml-6">
+      <h4 className="font-outfit font-black text-zinc-900 dark:text-white text-[18px] leading-tight mb-1 group-hover:text-[#db5a51] transition-colors">
         {title}
       </h4>
-      <p className="font-poppins font-normal text-white text-[16px] leading-[30px] mb-1 ">
+      <p className="font-outfit font-bold text-zinc-500 dark:text-zinc-400 text-[14px] mb-3">
         {organisation}
       </p>
-      <p className="font-poppins font-normal text-white text-[16px] leading-[30px] mb-1 ">
-        {degree}
-      </p>
-      <p className="font-poppins font-normal text-dimWhite text-[14px] leading-[30px] mb-1">
-        {duration}
-      </p>
-      <p className="font-poppins font-normal text-dimWhite text-[16px] leading-[30px] mb-1">
-        ● {content1}
-      </p>
+      
+      <div className="flex items-center gap-2 mb-3">
+         <span className="w-2 h-2 rounded-full bg-[#db5a51] animate-pulse" />
+         <span className="font-outfit font-bold text-[11px] uppercase tracking-widest text-[#db5a51]/70">{duration}</span>
+      </div>
+
+      {content1 && (
+        <p className="font-outfit font-medium text-zinc-500 dark:text-zinc-400 text-[13px] leading-relaxed line-clamp-2">
+          {content1}
+        </p>
+      )}
     </div>
-  </div>
+  </motion.div>
 );
 
 const Certifications = () => {
   return (
-    <section id="education">
-      <h1 className="flex-1 font-poppins font-semibold ss:text-[55px] text-[45px] text-white ss:leading-[80px] leading-[80px]">
-        Certification
-      </h1>
+    <section id="certification" className="section-divider py-20 relative">
       <motion.div
-        className={layout.sectionReverse}
-        whileInView={{ x: [-60, 0], opacity: [0, 1] }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
+        className="absolute top-40 right-1/4 w-80 h-80 bg-[#db5a51]/5 blur-[120px] rounded-full pointer-events-none"
+      />
+
+      <motion.h1
+        initial={{ y: -20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="section-heading w-full font-outfit font-black ss:text-[64px] text-[48px] text-zinc-900 dark:text-white ss:leading-[80px] leading-[60px] tracking-tighter text-center mb-20"
       >
-        <div className={layout.sectionImgReverse}>
-          <div className="w-[70%] h-[70%] relative z-[5]">
-            <Lottie {...defaultOptions} />
-          </div>
+        Expert <span className="text-[#db5a51]">Credentials</span>
+      </motion.h1>
 
-          {/* gradient start */}
-          <div className="absolute z-[3] -left-1/2 top-0 w-[50%] h-[50%] rounded-full white__gradient" />
-          <div className="absolute z-[0] w-[50%] h-[50%] -left-1/2 bottom-0 rounded-full pink__gradient" />
-          {/* gradient end */}
-        </div>
-
+      <div className={`${layout.section} gap-12`}>
+        {/* Cards */}
         <div className={`${layout.sectionInfo} flex-col`}>
-          {certification.map((feature, index) => (
-            <FeatureCard key={feature.id} index={index} {...feature} />
+          {certification.map((cert, index) => (
+            <CertCard key={index} index={index} {...cert} />
           ))}
         </div>
-      </motion.div>
+
+        {/* Lottie */}
+        <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className={`${layout.sectionImg} relative`}
+        >
+          <div className="w-[90%] max-w-[450px] relative z-[5] drop-shadow-[0_0_30px_rgba(219,90,81,0.2)]">
+            <Lottie {...defaultOptions} />
+          </div>
+          <div className="absolute z-[3] -left-1/4 top-0 w-[60%] h-[60%] rounded-full white__gradient opacity-10" />
+        </motion.div>
+      </div>
     </section>
   );
 };

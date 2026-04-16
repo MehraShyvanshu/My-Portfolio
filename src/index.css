@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,13 +11,18 @@
     #6d6d6d -78.47%,
     #11101d 91.61%
   );
-  --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
-  --scrollbar-primary: #00040f;
-  --scrollbar-secondary: rgb(247, 88, 88);
+  --card-shadow: 0px 20px 100px -10px rgba(219, 90, 81, 0.15);
+  --scrollbar-primary: #09090b;
+  --scrollbar-secondary: #db5a51;
 }
 
 * {
   scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+h1, h2, h3, h4, .font-outfit {
+  font-family: 'Outfit', sans-serif;
 }
 
 /* Firefox */
@@ -209,3 +214,179 @@
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
+
+/* ── Section heading with animated gradient underline ── */
+.section-heading {
+  position: relative;
+  display: block;
+  text-align: center;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #db5a51 0%, #e6837c 50%, #fab4af 100%);
+  transition: width 0.4s ease;
+}
+
+.section-heading:hover::after {
+  width: 140px;
+}
+
+/* ── Section wrapper with subtle top divider ── */
+.section-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 90px;
+  margin-top: 40px;
+}
+
+/* ── Enhanced feature-card with shimmer on hover ── */
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.feature-card:hover {
+  background: var(--black-gradient);
+  box-shadow: 0 8px 40px -12px rgba(219, 90, 81, 0.35);
+  transform: translateY(-2px);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Tech pill / badge ── */
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #e6837c;
+  background: rgba(219, 90, 81, 0.12);
+  border: 1px solid rgba(219, 90, 81, 0.25);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.tech-pill:hover {
+  background: rgba(219, 90, 81, 0.22);
+  border-color: rgba(219, 90, 81, 0.5);
+}
+
+/* ── Floating icon circle ── */
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(219, 90, 81, 0.12);
+  border: 1px solid rgba(219, 90, 81, 0.25);
+  flex-shrink: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.icon-circle:hover {
+  background: rgba(219, 90, 81, 0.22);
+  transform: scale(1.08) rotate(6deg);
+}
+
+/* ── Project card specific ── */
+.project-card {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.project-card:hover {
+  border-color: rgba(219, 90, 81, 0.4);
+  box-shadow: 0 12px 48px -10px rgba(219, 90, 81, 0.3);
+  transform: translateY(-3px);
+  background: var(--black-gradient);
+}
+
+/* ── Glow dot timeline bullet ── */
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #db5a51;
+  box-shadow: 0 0 8px rgba(219, 90, 81, 0.6);
+  position: absolute;
+  margin-top: 6px;
+  left: -6px;
+  border: 2px solid #00040f;
+}
+
+/* ── Subtle stat number glow ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(219, 90, 81, 0.3);
+  box-shadow: 0 10px 40px -10px rgba(219, 90, 81, 0.2);
+  transform: translateY(-4px);
+}
+
+.glow-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(219, 90, 81, 0.15) 0%, rgba(219, 90, 81, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: blob-float 20s infinite alternate;
+}
+
+@keyframes blob-float {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(10%, 15%) scale(1.1); }
+  66% { transform: translate(-5%, 10%) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.animate-text-glow {
+  text-shadow: 0 0 20px rgba(219, 90, 81, 0.4);
+}
+
+.white-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

@@ -16,12 +16,14 @@ import {
   ethforall,
 } from "../assets";
 import infodartLogo from "../assets/infodartLogo.png";
+import triconLogo from "../assets/tricon-logo.png";
+import solarWindsLogo from "../assets/SolarWinds-Logo.png";
 import suntech from "../assets/Suntech Logo.png";
 import EimpleLabLogo from "../assets/EimpleLabLogo.jfif";
-import ditLogo from "../assets/DIT Logo.jpg";
-import cLogo from "../assets/cLogo.png";
-import udemy from "../assets/udemy.png";
-import iotLogo from "../assets/iotLogo.jpg";
+import ditLogo from "../assets/education_hologram.png";
+import cLogo from "../assets/education_hologram.png";
+import udemy from "../assets/education_hologram.png";
+import iotLogo from "../assets/home_automation_iot.png";
 import EausetLogo from "../assets/EausetLogo.jfif";
 import cpyLogo from "../assets/cpyLogo.png";
 import rLogo from "../assets/rLogo.jpeg";
@@ -85,6 +87,10 @@ export const callToAction =
 
 export const navLinks = [
   {
+    id: "about",
+    title: "About Me",
+  },
+  {
     id: "skills",
     title: "Skills & Experience",
   },
@@ -92,10 +98,6 @@ export const navLinks = [
     id: "education",
     title: "Education",
   },
-  // {
-  //   id: "achievements",
-  //   title: "Achievements",
-  // },
   {
     id: "projects",
     title: "Projects",
@@ -104,15 +106,12 @@ export const navLinks = [
     id: "certification",
     title: "Certification",
   },
-  // {
-  //   id: "extraCurricular",
-  //   title: "Extra Curricular",
-  // },
   {
     id: "contactMe",
     title: "Contact Me",
   },
 ];
+
 
 export const educationList = [
   {
@@ -378,7 +377,7 @@ export const skills = [
         icon: FaRaspberryPi,
         name: "RaspberryPi",
       },
-      
+
     ],
   },
   {
@@ -414,6 +413,64 @@ export const skills = [
 ];
 
 export const experiences = [
+  {
+    organisation: "Tricon Infotech, India",
+    logo: triconLogo,
+    link: "https://www.triconinfotech.com/",
+    positions: [
+      {
+        title: "Software Engineer",
+        duration: "August 2025 - Present",
+        content: [
+          {
+            text: "🔐 Security & Automation Project\nFixed critical security vulnerabilities across full-stack applications\nWorked with code scanning tools & Dependabot to ensure dependency safety\nBuilt an AI-driven automation workflow:\nGenerates Copilot-ready prompts\nAuto-fixes vulnerabilities\nCreates pull requests automatically 🚀",
+            link: "",
+          },
+          {
+            text: "⚙️ Security & Compliance\nContributed to enterprise-grade security workflows\nHelped standardize secure coding practices and compliance checks",
+            link: "",
+          },
+          {
+            text: "🤖 AI Project: Log Analyzer\nDeveloped an AI-powered log analysis system using:\nLLM + RAG (Retrieval-Augmented Generation)\nChroma Vector DB for intelligent search\nMCP tools for context handling\nBuilt a clean Angular UI for real-time log insights\nEnables faster root cause analysis using AI",
+            link: "",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    organisation: "SolarWinds India Private Limited, India",
+    logo: solarWindsLogo,
+    link: "https://www.solarwinds.com/",
+    positions: [
+      {
+        title: "Associate Software Engineer",
+        duration: "January 2025 - July 2025",
+        content: [
+          {
+            text: "☁️ Explored and implemented solutions on AWS & Azure cloud platforms",
+            link: "",
+          },
+          {
+            text: "📊 Designed and monitored real-time dashboards for system metrics",
+            link: "",
+          },
+          {
+            text: "📈 Tracked and analyzed performance metrics to ensure system reliability",
+            link: "",
+          },
+          {
+            text: "🧪 Strengthened backend quality by writing unit tests for AWS-based services",
+            link: "",
+          },
+          {
+            text: "🔍 Developed understanding of cloud monitoring, observability, and distributed systems",
+            link: "",
+          },
+        ],
+      },
+    ],
+  },
   {
     organisation: "Infodart Technologies Ltd, India",
     logo: infodartLogo,
@@ -752,11 +809,11 @@ export const projects = [
         icon: FaJava,
         name: "Java",
       },
-       {
-         id: "icon-5",
-         icon: SiArduino,
-         name: "Arduino",
-       },
+      {
+        id: "icon-5",
+        icon: SiArduino,
+        name: "Arduino",
+      },
       // {
       //   id: "icon-3",
       //   icon: SiHtml5,
@@ -1181,7 +1238,7 @@ export const socialMedia = [
 export const aboutMe = {
   name: "Shyvanshu Mehra",
   tagLine:
-    "Software Engineer @Infodart Technology Ltd | Software Developer",
+    "Software Engineer @Tricon Infotech | Full Stack Developer",
   intro:
-    "Dedicated Frontend Developer with expertise in React, focused on building responsive, user-centric web applications.",
+    "Building Scalable, Secure & AI-Powered Applications.",
 };
