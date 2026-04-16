@@ -1,19 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 
 import styles from "./style";
 import {
-  AboutMe,
   Navbar,
   Hero,
-  Education,
-  SkillsAndExperience,
   Footer,
-  Projects,
-  BlogPosts,
   Loading,
-  Certifications,
 } from "./components";
+
+// Lazy load heavy components to break down the 3.6MB bundle
+const AboutMe = lazy(() => import("./components/AboutMe"));
+const SkillsAndExperience = lazy(() => import("./components/SkillsAndExperience"));
+const Education = lazy(() => import("./components/Education"));
+const Certifications = lazy(() => import("./components/Certifications"));
+const Projects = lazy(() => import("./components/Projects"));
+const BlogPosts = lazy(() => import("./components/BlogPosts"));
 
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -31,11 +33,8 @@ const App = () => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, []);
-
-  React.useEffect(() => {
-    // We set this to 0 in production to ensure bots (like Vercel) 
-    // see the content immediately for screenshots and SEO.
+    
+    // Immediate load in production to help bots
     setIsLoading(false);
   }, []);
 
@@ -62,7 +61,7 @@ const App = () => {
             key="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.75, delay: 0.5 }}
+            transition={{ duration: 0.75, delay: 0.1 }}
           >
             {/* ── Navbar ── */}
             <div className={`fixed top-0 w-full z-[100] backdrop-blur-md bg-white/70 dark:bg-[#09090b]/70 border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300`}>
@@ -83,15 +82,17 @@ const App = () => {
               </div>
             </div>
 
-            {/* ── Main content: all sections in one unified container ── */}
+            {/* ── Main content: all sections wrapped in Suspense ── */}
             <div className={`${styles.flexCenter} ${styles.paddingX}`}>
               <div className={`${styles.boxWidth}`}>
-                <AboutMe />
-                <SkillsAndExperience />
-                <Education />
-                <Certifications />
-                <Projects />
-                <BlogPosts enabled={false} />
+                <Suspense fallback={<div className="h-40 flex items-center justify-center text-[#db5a51] animate-pulse">Loading experience...</div>}>
+                  <AboutMe />
+                  <SkillsAndExperience />
+                  <Education />
+                  <Certifications />
+                  <Projects />
+                  <BlogPosts enabled={false} />
+                </Suspense>
               </div>
             </div>
 
