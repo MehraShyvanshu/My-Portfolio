@@ -12,8 +12,8 @@ import {
   Projects,
   BlogPosts,
   Loading,
+  Certifications,
 } from "./components";
-import Certifications from "./components/Certifications";
 
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
