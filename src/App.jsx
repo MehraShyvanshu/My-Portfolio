@@ -34,9 +34,9 @@ const App = () => {
   }, []);
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1200);
+    // We set this to 0 in production to ensure bots (like Vercel) 
+    // see the content immediately for screenshots and SEO.
+    setIsLoading(false);
   }, []);
 
   return (
