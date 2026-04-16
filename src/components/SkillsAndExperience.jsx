@@ -2,6 +2,7 @@ import React from "react";
 import { experiences, skills } from "../constants";
 import { layout } from "../style";
 import { motion } from "framer-motion";
+import { PremiumHeader } from "./";
 
 export const SkillIcon = ({ icon, name, index }) => {
   return (
@@ -139,15 +140,11 @@ const SkillsAndExperience = () => {
         className="absolute top-40 right-0 w-80 h-80 bg-[#db5a51]/5 blur-[120px] rounded-full pointer-events-none"
       />
 
-      <motion.h1
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="section-heading w-full font-outfit font-black ss:text-[64px] text-[48px] text-zinc-900 dark:text-white ss:leading-[80px] leading-[60px] tracking-tighter text-center mb-24"
-      >
-        Work & <span className="text-[#db5a51]">Expertise</span>
-      </motion.h1>
+      <PremiumHeader 
+        title="Work & Expertise" 
+        subtitle="Skills & Experience" 
+        highlight="Expertise"
+      />
 
       <div className="flex lg:flex-row flex-col gap-12 lg:gap-20">
         {/* Skills - Left Side on Desktop */}

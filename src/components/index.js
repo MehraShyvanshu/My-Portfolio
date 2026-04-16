@@ -14,7 +14,7 @@ import Stats from "./Stats";
 import Loading from "./Loading";
 import BlogPosts from "./BlogPosts";
 import Achievements from "./Achievements";
-
+import PremiumHeader from "./PremiumHeader";
 
 export {
     AboutMe,
@@ -31,4 +31,5 @@ export {
     Loading,
     BlogPosts,
     Achievements,
+    PremiumHeader,
 };

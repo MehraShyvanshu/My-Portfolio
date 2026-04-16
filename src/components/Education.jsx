@@ -3,6 +3,7 @@ import { educationList } from "../constants";
 import Lottie from "react-lottie-player";
 import animationData from "../lotties/quiz-mode-teal-dark.json";
 import { motion } from "framer-motion";
+import { PremiumHeader } from "./";
 
 const defaultOptions = {
   loop: true,
@@ -54,15 +55,11 @@ const Education = () => {
         className="absolute top-20 left-1/4 w-64 h-64 bg-[#db5a51]/5 blur-[100px] rounded-full pointer-events-none"
       />
 
-      <motion.h1
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="section-heading w-full font-outfit font-black ss:text-[64px] text-[48px] text-zinc-900 dark:text-white ss:leading-[80px] leading-[60px] tracking-tighter text-center mb-16"
-      >
-        Academic <span className="text-[#db5a51]">Journey</span>
-      </motion.h1>
+      <PremiumHeader 
+        title="Academic Journey" 
+        subtitle="Education" 
+        highlight="Journey"
+      />
 
       <div className={`${layout.sectionReverse} gap-12`}>
         {/* Lottie */}

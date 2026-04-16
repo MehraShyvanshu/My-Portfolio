@@ -19,6 +19,7 @@ import {
   SiArduino,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+import { PremiumHeader } from "./";
 
 const languageIcons = {
   JavaScript: SiJavascript,
@@ -39,10 +40,16 @@ const Project = (props) => {
     <motion.div
       initial={{ y: 30, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      whileHover={{ y: -8 }}
+      whileHover={{ 
+        y: -12,
+        rotateX: -5,
+        rotateY: 5,
+        transition: { duration: 0.3 }
+      }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="glass-card p-6 flex flex-col rounded-3xl h-full group"
+      style={{ transformStyle: "preserve-3d" }}
+      className="glass-card p-6 flex flex-col rounded-3xl h-full group perspective-[1000px]"
     >
       {/* ── Project Image & Header ── */}
       <div className="relative mb-6">
@@ -177,15 +184,11 @@ const Projects = () => {
         className="absolute bottom-20 left-0 w-96 h-96 bg-[#fab4af]/5 blur-[140px] rounded-full pointer-events-none"
       />
 
-      <motion.h1
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="section-heading w-full font-outfit font-black ss:text-[64px] text-[48px] text-zinc-900 dark:text-white ss:leading-[80px] leading-[60px] tracking-tighter text-center mb-24"
-      >
-        Digital <span className="text-[#db5a51]">Workspace</span>
-      </motion.h1>
+      <PremiumHeader 
+        title="Digital Workspace" 
+        subtitle="Recent Projects" 
+        highlight="Workspace"
+      />
 
       <div className="py-8">
         {loading ? (

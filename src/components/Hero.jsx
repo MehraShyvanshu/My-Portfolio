@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import styles from "../style";
 import LetsConnect from "./LetsConnect";
 import Lottie from "react-lottie-player";
@@ -16,26 +17,43 @@ const defaultOptions = {
 };
 
 const Hero = () => {
+  const sectionRef = useRef(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { damping: 50, stiffness: 400 });
+  const springY = useSpring(mouseY, { damping: 50, stiffness: 400 });
+
+  const handleMouseMove = (e) => {
+    if (!sectionRef.current) return;
+    const { left, top } = sectionRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+  };
+
   return (
     <section
       id="home"
-      className={`flex md:flex-row flex-col ${styles.paddingY} relative overflow-visible`}
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className={`flex md:flex-row flex-col ${styles.paddingY} relative overflow-hidden group/hero`}
     >
+      {/* ── Background Layer ── */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <motion.div 
+          className="absolute inset-0 spotlight-glow opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500"
+          style={{
+            "--x": useSpring(mouseX, { damping: 50, stiffness: 400 }),
+            "--y": useSpring(mouseY, { damping: 50, stiffness: 400 }),
+          }}
+        />
+      </div>
+
       {/* ── Left Side: Text Content ── */}
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 z-10`}
       >
-        <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-row items-center py-[6px] px-4 bg-zinc-100/10 dark:bg-zinc-800/30 backdrop-blur-sm rounded-[10px] mb-6 border border-zinc-200/10"
-        >
-          <p className="font-outfit font-medium text-[14px] uppercase tracking-[2px] text-zinc-600 dark:text-zinc-400">
-            Available for <span className="text-[#db5a51] animate-pulse">new opportunities</span>
-          </p>
-        </motion.div>
-
         <div className="flex flex-row justify-between items-center w-full">
           <motion.h1 
             initial={{ y: 20, opacity: 0 }}
@@ -61,7 +79,6 @@ const Hero = () => {
           <span className="text-gradient drop-shadow-sm select-none">
             {aboutMe.name}
           </span>
-          {/* Subtle name glow on hover */}
           <div className="absolute inset-0 bg-[#db5a51]/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
         </motion.h1>
         
@@ -73,8 +90,6 @@ const Hero = () => {
         >
           {aboutMe.intro}
         </motion.p>
-
-
       </div>
 
       {/* ── Right Side: Animation ── */}
@@ -88,7 +103,6 @@ const Hero = () => {
           <Lottie {...defaultOptions} />
         </div>
         
-        {/* Modern decorative gradient backgrounds */}
         <div className="absolute z-[0] w-[60%] h-[60%] top-0 pink__gradient opacity-20 filter blur-[150px]" />
         <div className="absolute z-[1] w-[80%] h-[80%] rounded-full bottom-40 white__gradient opacity-10" />
         <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient opacity-20" />

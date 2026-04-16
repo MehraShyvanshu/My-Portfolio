@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import styles from "../style";
 import aboutMeDev from "../assets/about_me_dev_3d.png";
+import { PremiumHeader } from "./";
 
 const highlights = [
   {
@@ -59,15 +60,11 @@ const AboutMe = () => {
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#db5a51]/5 blur-[100px] rounded-full pointer-events-none" />
 
       {/* ── Heading ── */}
-      <motion.h1
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="section-heading w-full font-outfit font-black ss:text-[64px] text-[48px] text-zinc-900 dark:text-white ss:leading-[80px] leading-[60px] tracking-tighter text-center mb-16"
-      >
-        My Professional <span className="text-[#db5a51]">Journey.</span>
-      </motion.h1>
+      <PremiumHeader 
+        title="My Professional Journey." 
+        subtitle="Growth & Evolution" 
+        highlight="Journey."
+      />
 
       <div className="flex lg:flex-row flex-col items-center sm:py-12 py-6 gap-16 lg:gap-24">
         {/* ── Left: Image + intro ── */}
