@@ -79,7 +79,7 @@ import { MdIntegrationInstructions } from "react-icons/md";
 import { DiCss3 } from "react-icons/di";
 
 export const resumeLink =
-  "https://drive.google.com/file/d/1l0DTV05w4IW9uGHZ8NM3Kk14QoGK8KUj/view?usp=drive_link";
+  "https://drive.google.com/file/d/1vYkaMOVnPzfY6UW8CXNvs8qcZBM8x7VI/view?usp=sharing";
 export const repoLink = "https://github.com/MehraShyvanshu";
 
 export const callToAction =
