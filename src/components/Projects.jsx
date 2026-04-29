@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import aiLogAnalyzerImg from "../assets/ai-log-analyzer.png";
 import fileUploadImg from "../assets/golang-file-upload.jpg";
 import agricultureDroneImg from "../assets/agriculture-drone.jpg";
+import goMicroservicesImg from "../assets/go-microservices-portal.png";
 import {
   SiJavascript,
   SiTypescript,
@@ -151,6 +152,7 @@ const Projects = () => {
             if (repo.name === 'AI-Log-Analyzer') projectImage = aiLogAnalyzerImg;
             if (repo.name === 'File-Upload-System-using-Golang') projectImage = fileUploadImg;
             if (repo.name === 'Agriculture-Based-Drone-using-Arduino') projectImage = agricultureDroneImg;
+            if (repo.name === 'go-microservices-portal') projectImage = goMicroservicesImg;
 
             combined.push({
               id: repo.id,
